@@ -79,8 +79,8 @@ def load_and_clean_data(file_path="imdb_top_1000.csv"):
     df["Gross"] = pd.to_numeric(df["Gross"], errors="coerce")
     df["Gross"] = df["Gross"].fillna(0).astype(float)
 
-    st.write("Después de to_numeric")
-    st.write(df["Gross"].dtype)
+    #st.write("Después de to_numeric")
+    #st.write(df["Gross"].dtype)
     #-----------------------------------------------------------FIN PRUEBA ERROR
     
 
@@ -95,8 +95,8 @@ def load_and_clean_data(file_path="imdb_top_1000.csv"):
     if 'Metascore of movie' in df.columns:
         df['Metascore of movie'] = pd.to_numeric(df['Metascore of movie'], errors='coerce')
 #-----------------------------------------------------------PRUEBA ERROR
-    st.write(df["Gross"].iloc[:5].tolist())
-    st.write([type(x) for x in df["Gross"].iloc[:5]])
+    #st.write(df["Gross"].iloc[:5].tolist())
+    #st.write([type(x) for x in df["Gross"].iloc[:5]])
 #-----------------------------------------------------------FIN PRUEBA ERROR
     return df
 
@@ -104,9 +104,9 @@ def load_and_clean_data(file_path="imdb_top_1000.csv"):
 # Carga de datos
 df_raw = load_and_clean_data()
 #-----------------------------------------PRUEBA ERROR
-st.write(df_raw.dtypes)
-st.write(df_raw["Gross"].dtype)
-st.write(df_raw["Gross"].head())
+#st.write(df_raw.dtypes)
+#st.write(df_raw["Gross"].dtype)
+#st.write(df_raw["Gross"].head())
 #-----------------------------------------FIN PRUEBA ERROR
 
 # Validación estricta: Si el DataFrame está vacío tras la limpieza, frena la app

@@ -22,6 +22,7 @@ def load_and_clean_data(file_path="imdb_top_1000.csv"):
     Carga y limpia el dataset con estrategias defensivas ante nombres de columnas
     variables, espacios invisibles y tipos de datos erróneos.
     """
+    st.write(df_raw.dtypes)
     if not os.path.exists(file_path):
         st.error(f"❌ Error Crítico: No se encuentra el archivo '{file_path}' en la raíz del repositorio.")
         return pd.DataFrame()

@@ -263,7 +263,7 @@ else:
             client = genai.Client(api_key=api_key)
 
             with st.status("Analizando...", expanded=True) as status:
-                st.write("🧠 Conectando con el modelo Gemini 2.5 Flash...")
+                st.write("🧠 Conectando con el modelo Gemini 3.6 Flash...")
 
                 def response_generator():
                     response_stream = client.models.generate_content_stream(

@@ -86,6 +86,8 @@ def load_and_clean_data(file_path="imdb_top_1000.csv"):
 df_raw = load_and_clean_data()
 #-----------------------------------------PRUEBA ERROR
 st.write(df_raw.dtypes)
+st.write(df_raw["Gross"].dtype)
+st.write(df_raw["Gross"].head())
 #-----------------------------------------FIN PRUEBA ERROR
 
 # Validación estricta: Si el DataFrame está vacío tras la limpieza, frena la app

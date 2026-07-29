@@ -63,10 +63,26 @@ def load_and_clean_data(file_path="imdb_top_1000.csv"):
         return pd.DataFrame()
 
     # 3. Limpieza de columna Gross (Texto con comas/símbolos -> Float -> fillna 0)
-    if df['Gross'].dtype == object:
-        df['Gross'] = df['Gross'].astype(str).str.replace(',', '').str.replace('$', '').str.strip()
-        df['Gross'] = pd.to_numeric(df['Gross'], errors='coerce')
-    df['Gross'] = df['Gross'].fillna(0)
+    #if df['Gross'].dtype == object:
+    #    df['Gross'] = df['Gross'].astype(str).str.replace(',', '').str.replace('$', '').str.strip()
+    #    df['Gross'] = pd.to_numeric(df['Gross'], errors='coerce')
+    #    df['Gross'] = df['Gross'].fillna(0)
+    #-----------------------------------------------------------PRUEBA ERROR
+    df["Gross"] = (
+        df["Gross"]
+        .astype(str)
+        .str.replace(",", "", regex=False)
+        .str.replace("$", "", regex=False)
+        .str.strip()
+    )
+
+    df["Gross"] = pd.to_numeric(df["Gross"], errors="coerce")
+    df["Gross"] = df["Gross"].fillna(0).astype(float)
+
+    st.write("Después de to_numeric")
+    st.write(df["Gross"].dtype)
+    #-----------------------------------------------------------FIN PRUEBA ERROR
+    
 
     # 4. Limpieza de columna Year of Release (errors='coerce', drop NaNs -> Int)
     df['Year of Release'] = pd.to_numeric(df['Year of Release'], errors='coerce')
@@ -78,7 +94,10 @@ def load_and_clean_data(file_path="imdb_top_1000.csv"):
     
     if 'Metascore of movie' in df.columns:
         df['Metascore of movie'] = pd.to_numeric(df['Metascore of movie'], errors='coerce')
-
+#-----------------------------------------------------------PRUEBA ERROR
+    st.write(df["Gross"].iloc[:5].tolist())
+    st.write([type(x) for x in df["Gross"].iloc[:5]])
+#-----------------------------------------------------------FIN PRUEBA ERROR
     return df
 
 
